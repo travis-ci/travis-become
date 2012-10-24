@@ -6,10 +6,9 @@ require 'travis/sso'
 
 use Rack::SSL if ENV['RACK_ENV'] == 'production'
 
-admins = ENV.fetch('TRAVIS_ADMINS').split(',')
 use Travis::SSO,
-  endpoint:     ENV.fetch('API_ENDPOINT'),
+  endpoint:     Travis.config.api_endpoint,
   mode:         :single_page,
-  authorized?:  -> u { admins.include? u['login'] }
+  authorized?:  -> u { Travis.config.admins.include? u['login'] }
 
-run Travis::Become.new(web_endpoint: ENV.fetch('WEB_ENDPOINT'))
+run Travis::Become.new(web_endpoint: Travis.config.web_endpoint)
