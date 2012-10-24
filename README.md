@@ -1,0 +1,1 @@
+This is an inspection tool allowing you to log in as a different user on [travis-web](https://github.com/travis-ci/travis-web).
