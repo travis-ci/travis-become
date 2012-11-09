@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/travis-ci/travis-api.git
-  revision: f220ad734f68855dd24442dc081100a9e5c3ae73
+  revision: ab841a0a23c731a719894d9329e4b4b069ec9822
   specs:
     travis-api (0.0.1)
       backports (~> 2.5)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: git://github.com/travis-ci/travis-core.git
-  revision: 8478a5892a84b7b6d504b1d5d78d17662e182527
+  revision: aca3c6234649b9a64d601c1540fe80b123e98f93
   specs:
     travis-core (0.0.1)
       actionmailer (~> 3.2.3)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: git://github.com/travis-ci/travis-sso.git
-  revision: 40499bf64b45927f7863c39aea998132dc890520
+  revision: 97a86ab1fe6e25257fa366733926c39ec477de95
   specs:
     travis-sso (0.0.1)
       multi_json
@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: git://github.com/travis-ci/travis-support.git
-  revision: 37e9ddf0cb15d142ab0bff87f8911b903003f535
+  revision: f78d9161369f574f12b9c0c0dbfe13b997766bdd
   specs:
     travis-support (0.0.1)
 
