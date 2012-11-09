@@ -99,6 +99,7 @@ GEM
       multi_json (~> 1.0)
       net-http-persistent (>= 2.7)
       net-http-pipeline
+    hashie (1.2.0)
     hashr (0.0.22)
     hike (1.2.1)
     hitimes (1.1.1)
@@ -157,6 +158,11 @@ GEM
     redcarpet (2.2.2)
     redis (3.0.2)
     rollout (1.1.0)
+    sentry-raven (0.3.1)
+      faraday (~> 0.8.0.rc2)
+      hashie
+      multi_json (~> 1.0)
+      uuidtools
     signature (0.1.4)
     simple_states (0.1.1)
       activesupport
@@ -186,12 +192,14 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.33)
+    uuidtools (2.1.3)
     yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  sentry-raven
   travis-api!
   travis-core!
   travis-sso!
