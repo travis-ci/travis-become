@@ -1,8 +1,7 @@
 require 'travis'
 require 'travis/api/app/access_token'
 require 'travis/sso'
-require 'rack/response'
-require 'rack/builder'
+require 'rack'
 require 'rack/ssl'
 require 'json'
 
@@ -13,11 +12,13 @@ module Travis
 
     def self.app_for(options)
       Rack::Builder.app(new(options)) do
+        use Rack::CommonLogger
         use Rack::SSL if ENV['RACK_ENV'] == 'production'
         use Travis::SSO,
           endpoint:     Travis.config.api_endpoint,
           mode:         :single_page,
           authorized?:  -> u { Travis.config.admins.include? u['login'] }
+        use Rack::ShowExceptions
       end
     end
 
