@@ -5,6 +5,7 @@ gem 'travis-sso',     github: 'travis-ci/travis-sso'
 gem 'travis-support', github: 'travis-ci/travis-support'
 gem 'gh',             github: 'rkh/gh'
 
+gem 'sidekiq'
 gem "sentry-raven",   github: 'getsentry/raven-ruby'
 gem 'rack-contrib',   github: 'rack/rack-contrib'
 gem 'bunny'
