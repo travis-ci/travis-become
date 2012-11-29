@@ -11,13 +11,14 @@ module Travis
     attr_accessor :web_endpoint, :template
 
     def self.app_for(options)
+      admins = options.fetch(:admins)
       Rack::Builder.app(new(options)) do
         use Rack::CommonLogger
         use Rack::SSL if ENV['RACK_ENV'] == 'production'
         use Travis::SSO,
-          endpoint:     Travis.config.api_endpoint,
+          endpoint:     options.fetch(:web_endpoint),
           mode:         :single_page,
-          authorized?:  -> u { Travis.config.admins.include? u['login'] }
+          authorized?:  -> u { admins.include? u['login'] }
         use Rack::ShowExceptions
       end
     end
