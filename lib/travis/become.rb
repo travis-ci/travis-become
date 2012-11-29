@@ -1,12 +1,25 @@
 require 'travis'
 require 'travis/api/app/access_token'
+require 'travis/sso'
 require 'rack/response'
+require 'rack/builder'
+require 'rack/ssl'
 require 'json'
 
 module Travis
   class Become
     TEMPLATE_FILE = File.expand_path('../become.html', __FILE__)
     attr_accessor :web_endpoint, :template
+
+    def self.app_for(options)
+      Rack::Builder.app(new(options)) do
+        use Rack::SSL if ENV['RACK_ENV'] == 'production'
+        use Travis::SSO,
+          endpoint:     Travis.config.api_endpoint,
+          mode:         :single_page,
+          authorized?:  -> u { Travis.config.admins.include? u['login'] }
+      end
+    end
 
     def initialize(options = {})
       Travis::Database.connect
