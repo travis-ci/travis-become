@@ -16,7 +16,7 @@ module Travis
         use Rack::CommonLogger
         use Rack::SSL if ENV['RACK_ENV'] == 'production'
         use Travis::SSO,
-          endpoint:     options.fetch(:web_endpoint),
+          endpoint:     options.fetch(:api_endpoint),
           mode:         :single_page,
           authorized?:  -> u { admins.include? u['login'] }
         use Rack::ShowExceptions
