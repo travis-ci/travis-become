@@ -35,8 +35,10 @@ module Travis
       user  = User.find_by_login(login)
 
       if user
+        data = Travis::Api::data(user, version: :v2)['user']
+        data['token'] = user.tokens.first.try(:token).to_s
         response = Rack::Response.new(template % {
-          user:   Travis::Api::data(user, version: :v2)['user'].to_json,
+          user:   data.to_json,
           token:  Travis::Api::App::AccessToken.create(user: user, app_id: 0),
           action: web_endpoint
         })
