@@ -66,7 +66,7 @@ GIT
 
 GIT
   remote: git://github.com/travis-ci/travis-api.git
-  revision: b005047d95abaa735fbc188bbab9a9fb6694c149
+  revision: 0bf14e417c7b97e8d1f2b76ead94ed3f54b7337b
   specs:
     travis-api (0.0.1)
       backports (~> 2.5)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: git://github.com/travis-ci/travis-core.git
-  revision: 9f6e5c841b170456cf82b1c57353b458892bb0bb
+  revision: 5be9c0783e469426b036b39591fedc7cbaa04208
   specs:
     travis-core (0.0.1)
       actionmailer (~> 3.2.3)
@@ -131,13 +131,7 @@ GIT
   specs:
     micro_migrations (0.0.1)
 
-PATH
-  remote: .
-  specs:
-    travis-become (0.0.1)
-
 GEM
-  remote: http://rubygems.org/
   remote: http://rubygems.org/
   remote: https://rubygems.org/
   specs:
@@ -340,7 +334,6 @@ DEPENDENCIES
   sinatra!
   sinatra-contrib!
   travis-api!
-  travis-become!
   travis-core!
   travis-sidekiqs!
   travis-sso!
