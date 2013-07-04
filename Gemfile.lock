@@ -1,27 +1,27 @@
 GIT
   remote: git://github.com/getsentry/raven-ruby.git
-  revision: fa360a9c5919c19f11552b9de6f83302060901f0
+  revision: e865f25cf5a6ae1d0350694f1dd4e3544054c6c6
   specs:
-    sentry-raven (0.3.1)
+    sentry-raven (0.5.0)
       faraday (>= 0.7.6)
-      hashie
+      hashie (>= 1.1.0)
       multi_json (~> 1.0)
       uuidtools
 
 GIT
   remote: git://github.com/rack/rack-contrib.git
-  revision: 6f337267eae0bedb4110879f2aea6b1bb2137980
+  revision: 951760b1710634623ebbccef8d65df9139bb41c2
   specs:
     rack-contrib (1.2.0)
       rack (>= 0.9.1)
 
 GIT
   remote: git://github.com/rkh/gh.git
-  revision: 1dece05c588c63e714520aae686589de1b3bcbd5
+  revision: 6eec1a730700d7e94bb288742ad23822d2d28604
   specs:
-    gh (0.9.1)
+    gh (0.11.2)
       addressable
-      backports (~> 2.3)
+      backports
       faraday (~> 0.8)
       multi_json (~> 1.0)
       net-http-persistent (>= 2.7)
@@ -29,14 +29,14 @@ GIT
 
 GIT
   remote: git://github.com/rkh/yard-sinatra.git
-  revision: 3b1064eef407d2d288a5b96d258178a1e67b3b80
+  revision: e61831bca0431b35eaa62fdd18acbc65f81322af
   specs:
     yard-sinatra (1.0.0)
       yard (~> 0.7)
 
 GIT
   remote: git://github.com/sinatra/sinatra-contrib.git
-  revision: c5c2d32e688123a1a1cab4b391447e995957c94f
+  revision: 1aed2897edebbea5e18a5772af9e060a689013fe
   specs:
     sinatra-contrib (1.4.0)
       backports (>= 2.0)
@@ -48,33 +48,23 @@ GIT
 
 GIT
   remote: git://github.com/sinatra/sinatra.git
-  revision: 49eac3a645add2d1fb1698ce4a250896ff0af1b4
+  revision: e42bd1cbdffbb04ba13835945233c276710b73b0
   specs:
-    sinatra (1.4.0)
+    sinatra (1.4.3)
       rack (~> 1.4)
-      rack-protection (~> 1.3)
-      tilt (~> 1.3, >= 1.3.3)
-
-GIT
-  remote: git://github.com/svenfuchs/simple_states.git
-  revision: b1d45144e6a758220d7b21f83b08dc92de0d3196
-  branch: sf-set-state-early
-  specs:
-    simple_states (0.1.1)
-      activesupport
-      hashr (~> 0.0.10)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
 
 GIT
   remote: git://github.com/travis-ci/travis-api.git
-  revision: 761b9996d725d1e92c49bcdb1296b00e81eb9ed8
+  revision: ecb60f00502b37f4e76c34fb17ed0082337b3dc3
   specs:
     travis-api (0.0.1)
       backports (~> 2.5)
-      hubble (~> 0.1)
-      newrelic_rpm (~> 3.3.0)
+      newrelic_rpm (~> 3.6.1.88)
       pg (~> 0.13.2)
       rack-contrib (~> 1.1)
-      rack-ssl (~> 1.3)
+      rack-ssl (~> 1.3, >= 1.3.3)
       redcarpet (~> 2.1)
       sinatra (~> 1.3)
       sinatra-contrib (~> 1.3)
@@ -84,24 +74,23 @@ GIT
 
 GIT
   remote: git://github.com/travis-ci/travis-core.git
-  revision: 1a4970b11a2112b9216d2b8c63331b8de62049b1
+  revision: b51953f7e4398cae843b577a526332cef3158893
   specs:
     travis-core (0.0.1)
       actionmailer (~> 3.2.12)
       activerecord (~> 3.2.12)
-      coder (~> 0.3.0)
+      coder (~> 0.4.0)
       data_migrations (~> 0.0.1)
       gh
       hashr (~> 0.0.19)
       metriks (~> 0.9.7)
       multi_json
-      postmark-rails (~> 0.4.1)
       pusher (~> 0.11.0)
       railties (~> 3.2.12)
       rake
       redis (~> 3.0)
       rollout (~> 1.1.0)
-      simple_states (~> 0.1.1)
+      simple_states (~> 1.0.0)
       thor (~> 0.14.6)
 
 GIT
@@ -122,7 +111,7 @@ GIT
 
 GIT
   remote: git://github.com/travis-ci/travis-support.git
-  revision: a214c215e1b52bdf4d3ab5d31e7e2df52fad5a0c
+  revision: c0add49c71ff3c788b4b7e5b63c11d3896d9847d
   specs:
     travis-support (0.0.1)
 
@@ -133,15 +122,14 @@ GIT
     micro_migrations (0.0.1)
 
 GEM
-  remote: http://rubygems.org/
   remote: https://rubygems.org/
   specs:
-    actionmailer (3.2.12)
-      actionpack (= 3.2.12)
-      mail (~> 2.4.4)
-    actionpack (3.2.12)
-      activemodel (= 3.2.12)
-      activesupport (= 3.2.12)
+    actionmailer (3.2.13)
+      actionpack (= 3.2.13)
+      mail (~> 2.5.3)
+    actionpack (3.2.13)
+      activemodel (= 3.2.13)
+      activesupport (= 3.2.13)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.4)
@@ -149,20 +137,20 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    activemodel (3.2.12)
-      activesupport (= 3.2.12)
+    activemodel (3.2.13)
+      activesupport (= 3.2.13)
       builder (~> 3.0.0)
-    activerecord (3.2.12)
-      activemodel (= 3.2.12)
-      activesupport (= 3.2.12)
+    activerecord (3.2.13)
+      activemodel (= 3.2.13)
+      activesupport (= 3.2.13)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activesupport (3.2.12)
-      i18n (~> 0.6)
+    activesupport (3.2.13)
+      i18n (= 0.6.1)
       multi_json (~> 1.0)
-    addressable (2.3.2)
+    addressable (2.3.5)
     arel (3.0.2)
-    atomic (1.0.1)
+    atomic (1.1.10)
     avl_tree (1.1.3)
     backports (2.8.2)
     builder (3.0.4)
@@ -170,47 +158,49 @@ GEM
     celluloid (0.12.4)
       facter (>= 1.6.12)
       timers (>= 1.0.0)
-    coder (0.3.0)
-    coderay (1.0.8)
+    coder (0.4.0)
+    coderay (1.0.9)
     columnize (0.3.6)
-    connection_pool (0.9.2)
+    connection_pool (0.9.3)
     daemons (1.1.9)
-    dalli (2.5.0)
+    dalli (2.6.4)
     data_migrations (0.0.1)
       activerecord
       rake
     database_cleaner (0.8.0)
-    debugger (1.2.2)
+    debugger (1.6.0)
       columnize (>= 0.3.1)
-      debugger-linecache (~> 1.1.1)
-      debugger-ruby_core_source (~> 1.1.5)
-    debugger-linecache (1.1.2)
-      debugger-ruby_core_source (>= 1.1.1)
-    debugger-ruby_core_source (1.1.5)
-    diff-lcs (1.1.3)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.1)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.3)
+    diff-lcs (1.2.4)
+    dotenv (0.8.0)
     erubis (2.7.0)
-    eventmachine (1.0.0)
-    facter (1.6.16)
+    eventmachine (1.0.3)
+    facter (1.7.1)
     factory_girl (2.4.2)
       activesupport
-    faraday (0.8.5)
+    faraday (0.8.7)
       multipart-post (~> 1.1)
-    flexmock (1.2.0)
-    foreman (0.60.2)
+    ffi (1.9.0)
+    flexmock (1.3.2)
+    foreman (0.63.0)
+      dotenv (>= 0.7)
       thor (>= 0.13.6)
-    hashie (1.2.0)
+    hashie (2.0.5)
     hashr (0.0.22)
-    hike (1.2.1)
-    hitimes (1.2.0)
-    hubble (0.1.2)
-      yajl-ruby (~> 1.1)
+    hike (1.2.3)
+    hitimes (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
-    json (1.7.7)
-    kgio (2.7.4)
-    listen (0.6.0)
-    mail (2.4.4)
-      i18n (>= 0.4.0)
+    json (1.8.0)
+    kgio (2.8.0)
+    listen (1.2.2)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+      rb-kqueue (>= 0.2)
+    mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     metaclass (0.0.1)
@@ -219,96 +209,96 @@ GEM
       atomic (~> 1.0)
       avl_tree (~> 1.1.2)
       hitimes (~> 1.1)
-    mime-types (1.21)
-    mocha (0.13.1)
+    mime-types (1.23)
+    mocha (0.14.0)
       metaclass (~> 0.0.1)
-    multi_json (1.5.1)
-    multipart-post (1.1.5)
+    multi_json (1.7.7)
+    multipart-post (1.2.0)
     net-http-persistent (2.8)
     net-http-pipeline (1.0.1)
-    newrelic_rpm (3.3.5)
+    newrelic_rpm (3.6.1.88)
     pg (0.13.2)
     polyglot (0.3.3)
-    postmark (0.9.18)
-      json
-      rake
-    postmark-rails (0.4.1)
-      actionmailer
-      postmark (>= 0.9.0)
-      rake
-    pry (0.9.10)
+    pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
-      slop (~> 3.3.1)
+      slop (~> 3.4)
     pusher (0.11.3)
       multi_json (~> 1.0)
       signature (~> 0.1.6)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-protection (1.3.2)
+    rack-protection (1.5.0)
       rack
     rack-ssl (1.3.3)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    railties (3.2.12)
-      actionpack (= 3.2.12)
-      activesupport (= 3.2.12)
+    railties (3.2.13)
+      actionpack (= 3.2.13)
+      activesupport (= 3.2.13)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    raindrops (0.10.0)
+    raindrops (0.11.0)
     rake (0.9.6)
-    rdoc (3.12.1)
+    rb-fsevent (0.9.3)
+    rb-inotify (0.9.0)
+      ffi (>= 0.5.0)
+    rb-kqueue (0.2.0)
+      ffi (>= 0.5.0)
+    rdoc (3.12.2)
       json (~> 1.4)
-    redcarpet (2.2.2)
-    redis (3.0.2)
-    redis-namespace (1.2.1)
+    redcarpet (2.3.0)
+    redis (3.0.4)
+    redis-namespace (1.3.0)
       redis (~> 3.0.0)
-    rerun (0.7.1)
-      listen
+    rerun (0.8.1)
+      listen (>= 1.0.3)
     rollout (1.1.0)
-    rspec (2.12.0)
-      rspec-core (~> 2.12.0)
-      rspec-expectations (~> 2.12.0)
-      rspec-mocks (~> 2.12.0)
-    rspec-core (2.12.1)
-    rspec-expectations (2.12.0)
-      diff-lcs (~> 1.1.3)
-    rspec-mocks (2.12.0)
+    rspec (2.13.0)
+      rspec-core (~> 2.13.0)
+      rspec-expectations (~> 2.13.0)
+      rspec-mocks (~> 2.13.0)
+    rspec-core (2.13.1)
+    rspec-expectations (2.13.0)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.13.1)
     sidekiq (2.5.4)
       celluloid (~> 0.12.0)
       connection_pool (~> 0.9.2)
       multi_json (~> 1)
       redis (~> 3)
       redis-namespace
-    signature (0.1.6)
-    slop (3.3.3)
+    signature (0.1.7)
+    simple_states (1.0.0)
+      activesupport
+      hashr (~> 0.0.10)
+    slop (3.4.5)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    thin (1.5.0)
+    thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     thor (0.14.6)
-    tilt (1.3.3)
-    timers (1.0.2)
-    treetop (1.4.12)
+    tilt (1.4.1)
+    timers (1.1.0)
+    treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.35)
-    unicorn (4.5.0)
+    tzinfo (0.3.37)
+    unicorn (4.6.3)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    uuidtools (2.1.3)
-    yajl-ruby (1.1.0)
-    yard (0.8.3)
+    uuidtools (2.1.4)
+    yard (0.8.6.2)
 
 PLATFORMS
   ruby
@@ -332,7 +322,7 @@ DEPENDENCIES
   rerun
   rspec (~> 2.11)
   sentry-raven!
-  simple_states!
+  simple_states
   sinatra!
   sinatra-contrib!
   travis-api!
