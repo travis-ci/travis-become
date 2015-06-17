@@ -39,7 +39,7 @@ module Travis
         data['token'] = user.tokens.first.try(:token).to_s
         response = Rack::Response.new(template % {
           user:   Rack::Utils.escape_html(data.to_json),
-          token:  Travis::Api::App::AccessToken.create(user: user, app_id: 0),
+          token:  Travis::Api::App::AccessToken.create(user: user, app_id: 99),
           action: web_endpoint
         })
       else
