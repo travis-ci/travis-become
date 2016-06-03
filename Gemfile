@@ -1,5 +1,3 @@
-ruby '2.2.1'
-
 source 'https://rubygems.org'
 
 gem 'travis-support',  github: 'travis-ci/travis-support'
@@ -53,4 +51,3 @@ end
 group :test do
   gem 'flexmock'
 end
-
