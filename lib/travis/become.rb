@@ -1,6 +1,9 @@
 require 'httparty'
 require 'travis/become/config'
-require 'travis/become/token'
+require 'travis/become/access_token'
+require 'travis/become/model/token'
+require 'travis/become/model/user'
+require 'travis/become/support/database'
 require 'travis/sso'
 require 'rack'
 require 'rack/ssl'
@@ -33,6 +36,8 @@ module Travis
       @web_endpoint = options.fetch(:web_endpoint)
       template_file = options.fetch(:template_file, TEMPLATE_FILE)
       @template     = options.fetch(:template) { File.read(template_file) }
+
+      Database.connect(ActiveRecord::Base, Travis::Become.config.database)
     end
 
     def call(env)
@@ -45,14 +50,17 @@ module Travis
       end
 
       response = HTTParty.get("#{@api_endpoint}/v3/owner/#{login}")
-      user = JSON.parse(response.body)
+      api_user = JSON.parse(response.body)
+      user_id = api_user['id']
+
+      user = User.find(user_id)
 
       if user
-        data = user
+        data = api_user
         data['token'] = user.tokens.first.try(:token).to_s
         response = Rack::Response.new(template % {
           user:   Rack::Utils.escape_html(data.to_json),
-          token:  Travis::Api::App::AccessToken.create(user: user, app_id: 0),
+          token:  AccessToken.create(user_id: user_id, app_id: 0),
           action: web_endpoint
         })
       else

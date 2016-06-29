@@ -1,18 +1,12 @@
 GIT
   remote: git://github.com/travis-ci/travis-sso.git
-  revision: d83e00b0651d3d636f5dad808b3e11ade41ec719
+  revision: 506e6ddae6ea9f6142baf517da5607d8f1dc6bc7
   specs:
     travis-sso (0.0.1)
       multi_json
       rack
       rotp
       yubikey
-
-GIT
-  remote: git://github.com/travis-ci/travis-support.git
-  revision: 2cd02d2a06fdd1e2fc2f129148c168b56f7c190f
-  specs:
-    travis-support (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -49,6 +43,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    pg (0.18.4)
     puma (3.4.0)
     rack (1.6.4)
     rack-ssl (1.4.1)
@@ -56,6 +51,7 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    redis (3.3.0)
     rerun (0.11.0)
       listen (~> 3.0)
     rotp (3.1.0)
@@ -75,13 +71,14 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   httparty
+  pg
   puma
   rack-ssl
+  redis
   rerun
   sentry-raven
   travis-config (~> 1.0.0)
   travis-sso!
-  travis-support!
 
 BUNDLED WITH
    1.12.5
