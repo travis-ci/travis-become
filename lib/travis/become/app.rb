@@ -27,7 +27,9 @@ route :get, :post, '/' do
 end
 
 route :get, :post, '/:login' do
-  api_response = HTTParty.get("#{API_ENDPOINT}/v3/owner/#{params['login']}")
+  login = params['login']
+
+  api_response = HTTParty.get("#{API_ENDPOINT}/v3/owner/#{login}")
   api_user = JSON.parse(api_response.body)
   user_id = api_user['id']
 
