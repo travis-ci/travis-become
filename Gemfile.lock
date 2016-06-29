@@ -115,7 +115,7 @@ GIT
 
 GIT
   remote: git://github.com/travis-ci/travis-sso.git
-  revision: d83e00b0651d3d636f5dad808b3e11ade41ec719
+  revision: 506e6ddae6ea9f6142baf517da5607d8f1dc6bc7
   specs:
     travis-sso (0.0.1)
       multi_json
@@ -240,7 +240,7 @@ GEM
     mime-types (1.25.1)
     mocha (0.14.0)
       metaclass (~> 0.0.1)
-    multi_json (1.11.0)
+    multi_json (1.12.1)
     multipart-post (2.0.0)
     net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
@@ -255,7 +255,7 @@ GEM
       httpclient (~> 2.5)
       multi_json (~> 1.0)
       signature (~> 0.1.8)
-    rack (1.4.5)
+    rack (1.4.7)
     rack-attack (4.2.0)
       rack
     rack-protection (1.5.3)
@@ -287,7 +287,7 @@ GEM
     rerun (0.8.2)
       listen (~> 1.0.3)
     rollout (1.1.0)
-    rotp (2.1.0)
+    rotp (3.1.0)
     rspec (2.99.0)
       rspec-core (~> 2.99.0)
       rspec-expectations (~> 2.99.0)
@@ -387,3 +387,6 @@ DEPENDENCIES
   travis-support!
   unicorn
   yard-sinatra!
+
+BUNDLED WITH
+   1.12.5
