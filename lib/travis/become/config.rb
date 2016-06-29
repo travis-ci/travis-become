@@ -9,7 +9,8 @@ module Travis
              encryption: { key: nil },
              api_endpoint: nil,
              web_endpoint: nil,
-             sentry: { dsn: nil }
+             sentry: { dsn: nil },
+             oauth2: { scope: "" }
     end
   end
 end

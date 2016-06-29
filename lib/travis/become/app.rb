@@ -3,10 +3,11 @@ require 'travis/become'
 require 'sinatra'
 require 'sinatra/multi_route'
 
-require 'httparty'
 require 'travis/become/config'
 require 'travis/become/access_token'
 require 'travis/become/model/token'
+require 'travis/become/model/permission'
+require 'travis/become/model/repository'
 require 'travis/become/model/user'
 require 'travis/become/support/database'
 require 'json'
@@ -29,22 +30,18 @@ end
 route :get, :post, '/:login' do
   login = params['login']
 
-  api_response = HTTParty.get("#{API_ENDPOINT}/v3/owner/#{login}")
-  api_user = JSON.parse(api_response.body)
-  user_id = api_user['id']
+  begin
+    login_column = Travis::Become::User.arel_table[:login]
+    user = Travis::Become::User.where(login_column.lower.eq(login.downcase)).first
 
-  user = Travis::Become::User.find(user_id)
-
-  if user
-    data = api_user
-    data['token'] = user.tokens.first.try(:token).to_s
+    data = user.data
 
     @user = Rack::Utils.escape_html(data.to_json)
-    @token = Travis::Become::AccessToken.create(user_id: user_id, app_id: 0)
+    @token = Travis::Become::AccessToken.create(user_id: user.id, app_id: 0)
     @action = WE_ENDPOINT
 
     erb :become
-  else
+  rescue ActiveRecord::RecordNotFound
     status 404
     body "could not find user #{login.inspect}"
   end

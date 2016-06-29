@@ -10,7 +10,6 @@ gem 'sentry-raven'
 gem 'rack-ssl'
 gem 'puma'
 gem 'activerecord'
-gem 'httparty'
 gem 'pg'
 gem 'redis'
 
