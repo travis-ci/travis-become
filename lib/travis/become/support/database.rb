@@ -1,21 +1,11 @@
 module Travis
   class Become
-    class Database < Struct.new(:const, :config, :logger)
-      class << self
-        def instances
-          @instances ||= {}
-        end
+    class Database
+      def self.connect
+        config = Travis::Become.config.database.to_h
 
-        def connect(const, config)
-          instances[const] ||= new(const, config).tap do |instance|
-            instance.connect
-          end
-        end
-      end
-
-      def connect
-        const.default_timezone = :utc
-        const.establish_connection(config.to_h)
+        ActiveRecord::Base.default_timezone = :utc
+        ActiveRecord::Base.establish_connection(config)
       end
     end
   end

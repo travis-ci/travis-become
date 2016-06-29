@@ -15,7 +15,7 @@ require 'json'
 API_ENDPOINT = Travis::Become.config.api_endpoint
 WE_ENDPOINT = Travis::Become.config.web_endpoint
 
-Travis::Become::Database.connect(ActiveRecord::Base, Travis::Become.config.database)
+Travis::Become::Database.connect
 
 route :get, :post, '/favicon.ico' do
   status 404
