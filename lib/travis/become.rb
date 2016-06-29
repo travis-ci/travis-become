@@ -1,5 +1,6 @@
-require 'travis'
-require 'travis/api/app/access_token'
+require 'httparty'
+require 'travis/become/config'
+require 'travis/become/token'
 require 'travis/sso'
 require 'rack'
 require 'rack/ssl'
@@ -23,8 +24,12 @@ module Travis
       end
     end
 
+    def self.config
+      @config ||= Config.load
+    end
+
     def initialize(options = {})
-      Travis::Database.connect
+      @api_endpoint = options.fetch(:api_endpoint)
       @web_endpoint = options.fetch(:web_endpoint)
       template_file = options.fetch(:template_file, TEMPLATE_FILE)
       @template     = options.fetch(:template) { File.read(template_file) }
@@ -32,10 +37,18 @@ module Travis
 
     def call(env)
       login = env['PATH_INFO'].gsub(/^\//, '')
-      user  = User.find_by_login(login)
+
+      if login.empty? || login == "favicon.ico"
+        response = Rack::Response.new("route / not found, you most likely want /{login}", 404)
+        response.finish
+        return response
+      end
+
+      response = HTTParty.get("#{@api_endpoint}/v3/owner/#{login}")
+      user = JSON.parse(response.body)
 
       if user
-        data = Travis::Api::data(user, version: :v2)['user']
+        data = user
         data['token'] = user.tokens.first.try(:token).to_s
         response = Rack::Response.new(template % {
           user:   Rack::Utils.escape_html(data.to_json),
@@ -43,7 +56,7 @@ module Travis
           action: web_endpoint
         })
       else
-        response = Rack::Response.new("could not find user #{login.inspect}", 400)
+        response = Rack::Response.new("could not find user #{login.inspect}", 404)
       end
 
       response.finish
