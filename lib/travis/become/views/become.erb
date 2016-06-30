@@ -1,0 +1,6 @@
+<body onload='document.forms[0].submit()'>
+  <form action='<%= @action %>' method='post'>
+    <input type='hidden' name='token' value='<%= @token %>'>
+    <input type='hidden' name='user'  value='<%= @user %>'>
+  </form>
+</body>
