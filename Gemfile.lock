@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/travis-ci/travis-sso.git
+  remote: https://github.com/travis-ci/travis-sso
   revision: 506e6ddae6ea9f6142baf517da5607d8f1dc6bc7
   specs:
     travis-sso (0.0.1)
