@@ -13,7 +13,7 @@ require 'travis/become/support/database'
 require 'json'
 
 API_ENDPOINT = Travis::Become.config.api_endpoint
-WE_ENDPOINT = Travis::Become.config.web_endpoint
+WEB_ENDPOINT = Travis::Become.config.web_endpoint
 
 Travis::Become::Database.connect
 
@@ -38,7 +38,7 @@ route :get, :post, '/:login' do
 
     @user = Rack::Utils.escape_html(data.to_json)
     @token = Travis::Become::AccessToken.create(user_id: user.id, app_id: 0)
-    @action = WE_ENDPOINT
+    @action = WEB_ENDPOINT
 
     erb :become
   rescue ActiveRecord::RecordNotFound
