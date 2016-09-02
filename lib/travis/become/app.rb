@@ -14,6 +14,7 @@ require 'json'
 
 API_ENDPOINT = Travis::Become.config.api_endpoint
 WEB_ENDPOINT = Travis::Become.config.web_endpoint
+WEB_ENDPOINT_BILLING = Travis::Become.config.web_endpoint_billing
 
 Travis::Become::Database.connect
 
@@ -39,6 +40,9 @@ route :get, :post, '/:login' do
     @user = Rack::Utils.escape_html(data.to_json)
     @token = Travis::Become::AccessToken.create(user_id: user.id, app_id: 0)
     @action = WEB_ENDPOINT
+    if params[:billing] == '1' || params[:billing] == 'true'
+      @action = WEB_ENDPOINT_BILLING
+    end
 
     erb :become
   rescue ActiveRecord::RecordNotFound
