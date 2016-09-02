@@ -40,8 +40,10 @@ route :get, :post, '/:login' do
     @user = Rack::Utils.escape_html(data.to_json)
     @token = Travis::Become::AccessToken.create(user_id: user.id, app_id: 0)
     @action = WEB_ENDPOINT
-    if params[:billing] == '1' || params[:billing] == 'true'
-      @action = WEB_ENDPOINT_BILLING
+    if WEB_ENDPOINT_BILLING
+      if params[:billing] == '1' || params[:billing] == 'true'
+        @action = WEB_ENDPOINT_BILLING
+      end
     end
 
     erb :become
