@@ -46,10 +46,6 @@ route :get, :post, '/:login' do
       end
     end
 
-    if params[:host]
-      @action = "https://#{params[:host]}"
-    end
-
     erb :become
   rescue ActiveRecord::RecordNotFound
     status 404
