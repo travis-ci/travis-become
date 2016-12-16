@@ -11,6 +11,7 @@ require 'travis/become/model/repository'
 require 'travis/become/model/user'
 require 'travis/become/support/database'
 require 'json'
+require 'addressable/uri'
 
 API_ENDPOINT = Travis::Become.config.api_endpoint
 WEB_ENDPOINT = Travis::Become.config.web_endpoint
@@ -43,6 +44,16 @@ route :get, :post, '/:login' do
     if WEB_ENDPOINT_BILLING
       if params[:billing] == '1' || params[:billing] == 'true'
         @action = WEB_ENDPOINT_BILLING
+      end
+    end
+
+    if params[:host]
+      uri = Addressable::URI.parse("https://#{params[:host]}")
+
+      if uri
+        if uri.host =~ /\A(.+\.)?travis-ci\.(com|org)\Z/
+          @action = uri.to_s
+        end
       end
     end
 

@@ -14,5 +14,6 @@ gem 'puma'
 gem 'activerecord'
 gem 'pg'
 gem 'redis'
+gem 'addressable'
 
 gem 'rerun'
