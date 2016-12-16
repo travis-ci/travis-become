@@ -46,7 +46,7 @@ route :get, :post, '/:login' do
       end
     end
 
-    if params[:host]
+    if params[:host] && (params[:host].end_with?(".travis-ci.org") || params[:host].end_with?(".travis-ci.com"))
       @action = "https://#{params[:host]}"
     end
 
