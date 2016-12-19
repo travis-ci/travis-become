@@ -48,7 +48,7 @@ route :get, :post, '/:login' do
     end
 
     if params[:host]
-      uri = Addressable::URI.parse("https://#{params[:host]}")
+      uri = Addressable::URI.parse("https://#{Rack::Utils.escape_html(params[:host])}")
 
       if uri
         if uri.host =~ /\A(.+\.)?travis-ci\.(com|org)\Z/
