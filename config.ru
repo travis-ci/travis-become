@@ -4,6 +4,7 @@ require 'raven'
 require 'travis/sso'
 require 'rack'
 require 'rack/ssl'
+require 'rack/utils'
 require 'travis/become'
 require 'travis/become/app'
 
@@ -11,7 +12,7 @@ use Raven::Rack if Travis::Become.config.sentry.dsn
 
 if ENV['BASIC_AUTH_PASSWORD']
   use Rack::Auth::Basic, "Restricted Area" do |username, password|
-    username == 'travis' and password == ENV['BASIC_AUTH_PASSWORD']
+    Rack::Utils.secure_compare(username, 'travis') && Rack::Utils.secure_compare(password, ENV['BASIC_AUTH_PASSWORD'])
   end
 end
 
