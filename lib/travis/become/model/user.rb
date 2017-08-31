@@ -20,8 +20,8 @@ module Travis
           synced_at: format_date(synced_at),
           correct_scopes: correct_scopes?,
           created_at: format_date(created_at),
-          channels: ["user-#{id}"]
-          token: tokens.first.try(:token).to_s,
+          channels: ["user-#{id}"],
+          token: tokens.first.try(:token).to_s
         }
       end
 
