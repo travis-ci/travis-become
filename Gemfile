@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.3.4'
 
 gem 'travis-sso', git: 'https://github.com/travis-ci/travis-sso'
-gem 'travis-config', '~> 1.0.0'
+gem 'travis-config', git: 'https://github.com/travis-ci/travis-config'
 
 gem 'sinatra'
 gem 'sinatra-contrib'

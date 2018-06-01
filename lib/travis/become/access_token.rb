@@ -46,7 +46,7 @@ module Travis
       private
 
         def redis
-          Thread.current[:redis] ||= ::Redis.connect(url: Travis::Become.config.redis.url)
+          Thread.current[:redis] ||= ::Redis.new(url: Travis::Become.config.redis.url)
         end
 
         def key(token)
