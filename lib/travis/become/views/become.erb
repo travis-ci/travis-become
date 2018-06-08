@@ -1,6 +1,6 @@
 <body onload='document.forms[0].submit()'>
-  <form action='<%= @action %>' method='post'>
+  <form action='<%= Rack::Utils.escape_html @action %>' method='post'>
     <input type='hidden' name='token' value='<%= @token %>'>
-    <input type='hidden' name='user'  value='<%= Rack::Utils.escape_html @user %>'>
+    <input type='hidden' name='user'  value='<%= @user %>'>
   </form>
 </body>
