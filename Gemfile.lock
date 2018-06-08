@@ -29,6 +29,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     backports (3.11.1)
     concurrent-ruby (1.0.5)
@@ -47,6 +49,7 @@ GEM
     multipart-post (2.0.0)
     mustermann (1.0.2)
     pg (1.0.0)
+    public_suffix (3.0.2)
     puma (3.11.3)
     rack (2.0.4)
     rack-protection (2.0.1)
@@ -86,6 +89,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  addressable
   pg
   puma
   rack-ssl
@@ -101,4 +105,4 @@ RUBY VERSION
    ruby 2.3.4p301
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
