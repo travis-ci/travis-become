@@ -5,7 +5,7 @@ ruby '2.3.4'
 gem 'travis-sso', git: 'https://github.com/travis-ci/travis-sso'
 gem 'travis-config', git: 'https://github.com/travis-ci/travis-config'
 
-gem 'sinatra', '>= 2.0.2'
+gem 'sinatra', ">= 2.0.2"
 gem 'sinatra-contrib'
 
 gem 'sentry-raven'
