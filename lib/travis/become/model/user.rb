@@ -32,12 +32,16 @@ module Travis
         end
 
         def correct_scopes?
-          missing = wanted_scopes - YAML.parse(github_scopes).to_a
+          missing = wanted_scopes - github_scopes.to_a
           missing.empty?
         end
 
         def wanted_scopes
           Travis::Become.config.oauth2.scope.to_s.split(',').sort
+        end
+
+        def github_scopes
+          github_scopes && YAML.parse(github_scopes)
         end
 
         def repository_ids
