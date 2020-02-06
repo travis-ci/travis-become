@@ -32,7 +32,7 @@ module Travis
         end
 
         def correct_scopes?
-          missing = wanted_scopes - github_scopes.to_a
+          missing = wanted_scopes - gh_scopes.to_a
           missing.empty?
         end
 
@@ -40,7 +40,7 @@ module Travis
           Travis::Become.config.oauth2.scope.to_s.split(',').sort
         end
 
-        def github_scopes
+        def gh_scopes
           github_scopes && YAML.parse(github_scopes)
         end
 
