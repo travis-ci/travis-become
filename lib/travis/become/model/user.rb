@@ -21,7 +21,8 @@ module Travis
           correct_scopes: correct_scopes?,
           created_at: format_date(created_at),
           channels: ["user-#{id}"],
-          token: tokens.first.try(:token).to_s
+          token: tokens.first.try(:token).to_s,
+          vcs_type: vcs_type
         }
       end
 
