@@ -30,7 +30,7 @@ route :get, :post, '/' do
 end
 
 
-route :get, :post, '/id/:login' do
+route :get, :post, '/id/:id' do
   handle_login(params, :by_id)
 end
 
@@ -39,13 +39,12 @@ route :get, :post, '/:login' do
 end
 
 def handle_login(params, type)
-  login = params['login']
   begin
     if type == :by_id
-      user = Travis::Become::User.find_by(id:  login)
+      user = Travis::Become::User.find_by(id:  params['id'])
     else
       login_column = Travis::Become::User.arel_table[:login]
-      user = Travis::Become::User.where(login_column.lower.eq(login.downcase)).first
+      user = Travis::Become::User.where(login_column.lower.eq(params['login'].downcase)).first
     end
 
     data = user.data
