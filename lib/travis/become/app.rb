@@ -33,8 +33,12 @@ route :get, :post, '/:login' do
   login = params['login']
 
   begin
-    login_column = Travis::Become::User.arel_table[:login]
-    user = Travis::Become::User.where(login_column.lower.eq(login.downcase)).first
+    if params.include?('type') && params['type'] == 'uid'
+      user = Travis::Become::User.find_by(id:  login)
+    else
+      login_column = Travis::Become::User.arel_table[:login]
+      user = Travis::Become::User.where(login_column.lower.eq(login.downcase)).first
+    end
 
     data = user.data
 
