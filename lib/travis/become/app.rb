@@ -29,12 +29,23 @@ route :get, :post, '/' do
   body 'route / not found, you most likely want /{login}'
 end
 
-route :get, :post, '/:login' do
-  login = params['login']
 
+route :get, :post, '/id/:id' do
+  handle_login(params, :by_id)
+end
+
+route :get, :post, '/:login' do
+  handle_login(params, :by_login)
+end
+
+def handle_login(params, type)
   begin
-    login_column = Travis::Become::User.arel_table[:login]
-    user = Travis::Become::User.where(login_column.lower.eq(login.downcase)).first
+    if type == :by_id
+      user = Travis::Become::User.find_by(id:  params['id'])
+    else
+      login_column = Travis::Become::User.arel_table[:login]
+      user = Travis::Become::User.where(login_column.lower.eq(params['login'].downcase)).first
+    end
 
     data = user.data
 
