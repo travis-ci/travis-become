@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.4'
+ruby '2.6.6'
 
 gem 'travis-sso', git: 'https://github.com/travis-ci/travis-sso'
 gem 'travis-config', git: 'https://github.com/travis-ci/travis-config'
