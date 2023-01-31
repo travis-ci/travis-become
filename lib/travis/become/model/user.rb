@@ -23,7 +23,7 @@ module Travis
           created_at: format_date(created_at),
           channels: ["user-#{id}"],
           token: token,
-          rss_token: tokens.rss.first.try(:token).to_s || token,
+          rss_token: tokens.rss.first.try(:token) || token,
           vcs_type: vcs_type
         }
       end
