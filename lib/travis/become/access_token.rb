@@ -5,7 +5,7 @@ module Travis
   class Become
     class AccessToken
       DEFAULT_SCOPES = [:public, :private]
-      attr_reader :token, :scopes, :user_id, :app_id, :extra
+      attr_reader :token, :travis_token, :scopes, :user_id, :app_id, :extra
 
       def self.create(options = {})
         new(options).tap(&:save)
@@ -19,6 +19,7 @@ module Travis
         @scopes   = Array(options[:scopes] || options[:scope] || DEFAULT_SCOPES).map(&:to_sym)
         @user_id  = Integer(options[:user_id])
         @token    = options[:token] || reuse_token || SecureRandom.urlsafe_base64(16)
+        @travis_token = options[:travis_token]
         @extra    = options[:extra]
       end
 

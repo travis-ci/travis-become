@@ -3,6 +3,7 @@ require 'active_record'
 module Travis
   class Become
     class Token < ActiveRecord::Base
+      enum purpose: [ :asset, :rss ]
       belongs_to :user
 
       # token field used to use EncryptedColumn

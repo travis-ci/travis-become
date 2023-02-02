@@ -9,6 +9,7 @@ module Travis
       has_many :repositories, through: :permissions
 
       def data
+        token = tokens.asset.first.try(:token).to_s
         {
           id: id,
           name: name,
@@ -21,7 +22,8 @@ module Travis
           correct_scopes: correct_scopes?,
           created_at: format_date(created_at),
           channels: ["user-#{id}"],
-          token: tokens.first.try(:token).to_s,
+          token: token,
+          rss_token: tokens.rss.first.try(:token) || token,
           vcs_type: vcs_type
         }
       end
