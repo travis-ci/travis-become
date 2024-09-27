@@ -6,7 +6,7 @@ module Travis
       define database: { adapter: 'postgresql', database: "travis_#{env}", encoding: 'unicode', min_messages: 'warning', pool: 25, reaping_frequency: 60, variables: { statement_timeout: 10000 } },
              redis: { pool: { size: 20 } },
              admins: [],
-             encryption: { key: nil },
+             encryption: { key: ENV['TRAVIS_ENCRYPTION_KEY'] || 'secret' * 10 },
              api_endpoint: nil,
              web_endpoint: nil,
              web_endpoint_billing: nil,
