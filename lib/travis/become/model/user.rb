@@ -10,6 +10,15 @@ module Travis
 
       def data
         token = tokens.asset.first.try(:token).to_s
+        puts "Token in User: #{token}"
+
+        rss_token = tokens.rss.first.try(:token) || token
+        puts "RSS Token in User: #{rss_token}"
+
+        web_token = tokens.web.first.try(:token) || token
+        puts "Web Token in User: #{web_token}"
+        
+        puts "User ID: #{id}"
         {
           id: id,
           name: name,
