@@ -63,6 +63,7 @@ module Travis
         end
 
         def reuse_token
+          puts "reuse_token is #{redis.get(reuse_key)}"
           redis.get(reuse_key)
         end
 
