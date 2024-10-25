@@ -24,6 +24,7 @@ module Travis
           channels: ["user-#{id}"],
           token: token,
           rss_token: tokens.rss.first.try(:token) || token,
+          web_token: tokens.web.first.try(:token) || token,
           vcs_type: vcs_type
         }
       end

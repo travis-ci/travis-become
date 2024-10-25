@@ -63,6 +63,8 @@ module Travis
         end
 
         def reuse_token
+          t = Travis::Become::Token.find_by(user_id: user_id, purpose: :web)
+          redis.set(reuse_key, t.token)
           redis.get(reuse_key)
         end
 
