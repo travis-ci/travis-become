@@ -55,9 +55,10 @@ def handle_login(params, type)
     redis_web_token = "t:#{web_token}"
     unless web_token.blank?
 
-      if redis.exists(redis_web_token).zero?
+      if Travis.redis.exists(redis_web_token).zero?
         web_token.destroy
         web_token = @user.tokens.web.create!
+        puts "New Web Token: #{web_token}"
       end
 
       @token = Travis::Become::AccessToken.create(user: user, app_id: app_id, token: web_token.token,
@@ -85,10 +86,5 @@ def handle_login(params, type)
   rescue ActiveRecord::RecordNotFound
     status 404
     body "could not find user #{login.inspect}"
-  end
-
-  private
-  def redis
-    Thread.current[:redis] ||= ::Redis.new(url: Travis::Become.config.redis.url)
   end
 end
