@@ -50,7 +50,19 @@ def handle_login(params, type)
     data = user.data
 
     @user = Rack::Utils.escape_html(data.to_json)
-    @token = data[:web_token]
+    # @token = data[:web_token]
+    web_token = data[:web_token]
+    redis_web_token = "t:#{web_token.token}"
+    unless web_token.blank?
+
+      if redis.exists(redis_web_token).zero?
+        web_token.destroy
+        web_token = @user.tokens.web.create!
+      end
+
+      @token = Travis::Become::AccessToken.create(user: user, app_id: app_id, token: web_token.token,
+                     do_not_reuse: true)
+    end
     puts "TOKEN from handle_login IS #{@token}"
     @action = WEB_ENDPOINT
     if WEB_ENDPOINT_BILLING

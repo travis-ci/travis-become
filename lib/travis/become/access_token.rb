@@ -21,6 +21,7 @@ module Travis
         @token    = options[:token] || reuse_token || SecureRandom.urlsafe_base64(16)
         @travis_token = options[:travis_token]
         @extra    = options[:extra]
+        @do_not_reuse = options[:do_not_reuse] || false
       end
 
       def save
@@ -29,7 +30,7 @@ module Travis
         data = [user_id, app_id, *scopes]
         data << encode_json(extra) if extra
         redis.rpush(key, data.map(&:to_s))
-        redis.set(reuse_key, token)
+        redis.set(reuse_key, token) unless @do_not_reuse
       end
 
       def user
