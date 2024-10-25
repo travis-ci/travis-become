@@ -4,7 +4,7 @@ module Travis
       def self.connect
         config = Travis::Become.config.database.to_h
 
-        ActiveRecord::Base.default_timezone = :utc
+        ActiveRecord.default_timezone = :utc
         ActiveRecord::Base.establish_connection(config)
       end
     end
