@@ -52,7 +52,7 @@ def handle_login(params, type)
     @user = Rack::Utils.escape_html(data.to_json)
     # @token = data[:web_token]
     web_token = data[:web_token]
-    redis_web_token = "t:#{web_token.token}"
+    redis_web_token = "t:#{web_token}"
     unless web_token.blank?
 
       if redis.exists(redis_web_token).zero?
