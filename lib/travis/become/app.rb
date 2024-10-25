@@ -86,4 +86,9 @@ def handle_login(params, type)
     status 404
     body "could not find user #{login.inspect}"
   end
+
+  private
+  def redis
+    Thread.current[:redis] ||= ::Redis.new(url: Travis::Become.config.redis.url)
+  end
 end
