@@ -48,9 +48,10 @@ def handle_login(params, type)
     end
 
     data = user.data
+    web_token = data[:web_token]
 
     @user = Rack::Utils.escape_html(data.to_json)
-    @token = Travis::Become::AccessToken.create(user_id: user.id, app_id: 0)
+    @token = Travis::Become::AccessToken.create(user_id: user.id, app_id: 0, token: web_token, do_not_reuse: true)
     @action = WEB_ENDPOINT
     if WEB_ENDPOINT_BILLING
       if params[:billing] == '1' || params[:billing] == 'true'
